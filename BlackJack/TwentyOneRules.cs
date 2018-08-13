@@ -8,7 +8,7 @@ namespace BlackJack
 {
     public class TwentyOneRules
     {
-        private static Dictionary<Face, int> _cardValues = new Dictionary<Face, int>()
+        public static Dictionary<Face, int> _cardValues = new Dictionary<Face, int>()
         {
             [Face.Two] = 2,
             [Face.Three] = 3,
@@ -60,6 +60,7 @@ namespace BlackJack
             {
                 if (value > 16 && value < 22) return true;
             }
+            return false;
         }
         public static bool? CompareHands(List<Card> PlayerHand, List<Card> DealerHand)
         {
@@ -72,7 +73,6 @@ namespace BlackJack
             if (playerScore > dealerScore) return true;
             else if (playerScore < dealerScore) return false;
             else return null;
-
 
         }
     }

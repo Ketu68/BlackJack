@@ -16,7 +16,8 @@ namespace BlackJack
         }
         private List<Card> _hand = new List<Card>();
         public List<Card> Hand { get { return _hand; } set { _hand = value; } }
-        public int Balance { get; set; }
+        //        public int Balance { get; set; }
+        public int Balance;
         public string Name { get; set; }
         public bool isActivelyPlaying { get; set; }
         public bool Stay { get; set; }
@@ -31,6 +32,7 @@ namespace BlackJack
             else
             {
                 Balance -= amount;
+                return true;
             }
         }
 

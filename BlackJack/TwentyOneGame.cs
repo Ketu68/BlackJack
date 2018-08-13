@@ -8,6 +8,12 @@ namespace BlackJack
 {
     public class TwentyOneGame : Game
     {
+        //The following code is for future implementation of running hand count totals to be displayed after each deal and hit 
+
+        //public int playerTotal = 0, dealerTotal = 0;
+        //dealerTotal += TwentyOneRules._cardValues[1];
+        //playerTotal += TwentyOneRules._cardValues[1];
+
         public TwentyOneDealer Dealer { get; set; }
 
         public override void Play()
@@ -21,7 +27,7 @@ namespace BlackJack
             Dealer.Hand = new List<Card>();
             Dealer.Stay = false;
             Dealer.Deck = new Deck();
-            Dealer.Deck.Shuffle();
+            Dealer.Deck.Shuffle(3);
             Console.WriteLine("Place your bet!");
 
             foreach (Player player in Players)
@@ -74,6 +80,13 @@ namespace BlackJack
                     {
                         Console.Write("{0} ", card.ToString());
                     }
+                    Console.WriteLine("");
+                    Console.WriteLine("Dealer cards are: ");
+                    foreach (Card card in Dealer.Hand)
+                    {
+                        Console.Write("{0} ", card.ToString());
+                    }
+
                     Console.WriteLine("\n\nHit or stay?");
                     string answer = Console.ReadLine().ToLower();
                     if (answer == "stay")
@@ -92,8 +105,16 @@ namespace BlackJack
                         Console.WriteLine("{0} Busted! You lose your bet of {1}.  Your balance is now {2}.", player.Name, Bets[player], player.Balance);
                         Console.WriteLine("Do you want to play again?");
                         answer = Console.ReadLine().ToLower();
-                        if (answer == "yes" || answer == "yeah") player.isActivelyPlaying = true;
-                        else player.isActivelyPlaying = false;
+                        if (answer == "yes" || answer == "yeah" || answer == "y")
+                        {
+                            player.isActivelyPlaying = true;
+                            return;
+                        }
+                        else
+                        {
+                            player.isActivelyPlaying = false;
+                            return;
+                        }
                     }
                 }
             }
@@ -139,7 +160,7 @@ namespace BlackJack
                 }
                 Console.WriteLine("Play again?");
                 string answer = Console.ReadLine().ToLower();
-                if (answer == "yes" || answer == "yeah")
+                if (answer == "yes" || answer == "yeah" || answer == "y")
                 {
                     player.isActivelyPlaying = true;
                     return;

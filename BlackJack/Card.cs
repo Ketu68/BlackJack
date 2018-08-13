@@ -16,15 +16,13 @@ namespace BlackJack
             return string.Format("{0} of {1}", Face, Suit);
         }
     }
+
     public enum Suit
     {
-        Clubs,
-        Diamonds,
-        Hearts,
-        Spades
+        Clubs, Diamonds, Hearts, Spades
     }
     public enum Face
     {
-        Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Jack,Queen,King,Ace
+        Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
     }
 }
